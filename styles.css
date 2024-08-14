@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 5px;
+    margin: 15px 0;
 }
 
 .idp-image-card {
@@ -16,11 +16,21 @@
 }
 
 .idp-link {
-    width: 30%;
     margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 10px;
     background: #f9f9f9;
-    border-radius: 15px;
-    min-width: 33%;
+    width: 100%;
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 100%;
+}
+
+.card-wrapper {
+    padding: 10px;
+}
+
+@media only screen and (max-device-width: 800px) {
+    .idp-link {
+        width: 100% !important;
+    }
 }

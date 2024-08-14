@@ -102,7 +102,7 @@ add_action('save_post', 'idp_save_post_meta');
 // Shortcode to display images
 function idp_display_images($atts)
 {
-    $paged_number = get_query_var('paged') ?  get_query_var('paged') : $atts['paged'];
+    $paged_number = (get_query_var('paged') ?  get_query_var('paged') : (isset($atts['paged']) ? $atts['paged'] : ''));
 
     $atts = shortcode_atts(array(
         'newspaper' => '',
@@ -162,7 +162,7 @@ function idp_display_images($atts)
 
     if ($query->have_posts()) {
         ob_start();
-        echo '<div class="idp-images">';
+        echo '<div class="idp-images row">';
         while ($query->have_posts()) {
             $query->the_post();
             $post_id = get_the_ID();
@@ -174,21 +174,23 @@ function idp_display_images($atts)
             $credit = get_post_meta(get_the_ID(), '_idp_credit', true);
 
     ?>
-            <a class="idp-link text-dark" href="<?= get_permalink($post_id); ?>">
-                <div class="idp-image-card p-2">
-                    <h4 class="font-weight-bold text-uppercase"><?php the_title(); ?></h4>
-                    <img style="object-fit: cover;width: 100%;height: 250px;" src="<?php echo esc_url($img_src); ?>" alt="<?php the_title(); ?>">
-                    <div class="idp-meta">
-                        <p><?php the_content() ?></p>
-                        <p>
-                            Newspaper: <?php echo esc_html($newspaper); ?><br>
-                            Mover: <?php echo esc_html($mover); ?><br>
-                            Location: <?php echo esc_html($location); ?><br>
-                            Topic: <?php echo esc_html($topic); ?><br>
-                            Credit:<?php echo esc_html($credit); ?></p>
+            <div class="col-md-4 card-wrapper">
+                <a class="idp-link text-dark " href="<?= get_permalink($post_id); ?>">
+                    <div class="idp-image-card p-2">
+                        <h4 class="font-weight-bold text-uppercase"><?php the_title(); ?></h4>
+                        <img style="object-fit: cover;width: 100%;height: 250px;" src="<?php echo esc_url($img_src); ?>" alt="<?php the_title(); ?>">
+                        <div class="idp-meta">
+                            <p><?php the_content() ?></p>
+                            <p>
+                                <?php if ($newspaper) echo 'Newspaper:' . esc_html($newspaper) . '<br>'; ?>
+                                <?php if ($mover) echo 'Mover:' . esc_html($mover) . '<br>'; ?>
+                                <?php if ($location) echo 'Location:' .  esc_html($location) . '<br>'; ?>
+                                <?php if ($topic) echo 'Topic:' . esc_html($topic) . '<br>'; ?>
+                                <?php if ($credit) echo 'Credit:' . esc_html($credit) . '<br>'; ?></p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
 <?php
         }
         echo '</div>';

@@ -24,22 +24,24 @@ get_header();
                 ?>
 
 
-
-                    <a class="idp-link text-dark" href="<?= get_permalink($post_id); ?>">
-                        <div class="idp-image-card p-2">
-                            <h4 class="font-weight-bold text-uppercase"><?php the_title(); ?></h4>
-                            <img style="object-fit: cover;width: 100%;height: 250px;" src="<?php echo esc_url($img_src); ?>" alt="<?php the_title(); ?>">
-                            <div class="idp-meta">
-                                <p><?php the_content() ?></p>
-                                <p>
-                                    Newspaper: <?php echo esc_html($newspaper); ?><br>
-                                    Mover: <?php echo esc_html($mover); ?><br>
-                                    Location: <?php echo esc_html($location); ?><br>
-                                    Topic: <?php echo esc_html($topic); ?><br>
-                                    Credit:<?php echo esc_html($credit); ?></p>
+                    <div class="col-md-4 card-wrapper">
+                        <a class="idp-link text-dark" href="<?= get_permalink($post_id); ?>">
+                            <div class="idp-image-card p-2">
+                                <h4 class="font-weight-bold text-uppercase"><?php the_title(); ?></h4>
+                                <img style="object-fit: cover;width: 100%;height: 250px;" src="<?php echo esc_url($img_src); ?>" alt="<?php the_title(); ?>">
+                                <div class="idp-meta">
+                                    <p><?php
+                                        the_content() ?></p>
+                                    <p>
+                                        <?php if ($newspaper) echo 'Newspaper:' . esc_html($newspaper) . '<br>'; ?>
+                                        <?php if ($mover) echo 'Mover:' . esc_html($mover) . '<br>'; ?>
+                                        <?php if ($location) echo 'Location:' .  esc_html($location) . '<br>'; ?>
+                                        <?php if ($topic) echo 'Topic:' . esc_html($topic) . '<br>'; ?>
+                                        <?php if ($credit) echo 'Credit:' . esc_html($credit) . '<br>'; ?></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
 
 
                 <?php
