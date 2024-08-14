@@ -33,11 +33,11 @@ get_header();
                                     <p><?php
                                         the_content() ?></p>
                                     <p>
-                                        <?php if ($newspaper) echo 'Newspaper:' . esc_html($newspaper) . '<br>'; ?>
-                                        <?php if ($mover) echo 'Mover:' . esc_html($mover) . '<br>'; ?>
-                                        <?php if ($location) echo 'Location:' .  esc_html($location) . '<br>'; ?>
-                                        <?php if ($topic) echo 'Topic:' . esc_html($topic) . '<br>'; ?>
-                                        <?php if ($credit) echo 'Credit:' . esc_html($credit) . '<br>'; ?></p>
+                                        <?php if ($newspaper) echo 'Newspaper: ' . esc_html($newspaper) . '<br>'; ?>
+                                        <?php if ($mover) echo 'Mover: ' . esc_html($mover) . '<br>'; ?>
+                                        <?php if ($location) echo 'Location: ' .  esc_html($location) . '<br>'; ?>
+                                        <?php if ($topic) echo 'Topic: ' . esc_html($topic) . '<br>'; ?>
+                                        <?php if ($credit) echo 'Credit: ' . esc_html($credit) . '<br>'; ?></p>
                                 </div>
                             </div>
                         </a>
